@@ -56,8 +56,12 @@ local accent = hsl(35, 70, 80)
 local pink = hsl(2, 70, 80)
 local purple = hsl(270, 70, 80)
 local blue = hsl(200, 70, 80)
-local green = hsl(150, 70, 80)
+local green = hsl(140, 70, 80)
 local red = hsl(0, 70, 80)
+
+local error = hsl(0, 70, 60)
+local info = hsl(200, 70, 60)
+local warn = hsl(35, 70, 60)
 
 -- local accent = hsl(47.48, 83.74, 48.24)
 -- local accent = hsl(34.96, 87.59, 71.57)
@@ -115,7 +119,7 @@ local theme = lush(function(injected_functions)
 		IncSearch({ fg = bg, bg = accent }), -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 		Substitute({ fg = bg, bg = accent }), -- |:substitute| replacement text highlighting
 
-		LineNr({ fg = fg_sub }), -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+		LineNr({ fg = accent }), -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 		LineNrAbove({ fg = fg_sub }), -- Line number for when the 'relativenumber' option is set, above the cursor line
 		LineNrBelow({ fg = fg_sub }), -- Line number for when the 'relativenumber' option is set, below the cursor line
 
@@ -161,14 +165,14 @@ local theme = lush(function(injected_functions)
 		StatusLine({ fg = accent, bg = bg_sub }), -- Status line of current window
 		StatusLineNC({ fg = fg_sub, bg = bg_sub }), -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 
-		TabLine({ fg = fg, bg = bg }), -- Tab pages line, not active tab page label
-		TabLineFill({ fg = fg, bg = red }), -- Tab pages line, where there are no labels
-		TabLineSel({ fg = fg, bg = bg }), -- Tab pages line, active tab page label
+		TabLine({ fg = fg_sub, bg = bg_sub }), -- Tab pages line, not active tab page label
+		TabLineFill({ fg = red, bg = bg }), -- Tab pages line, where there are no labels
+		TabLineSel({ fg = fg, bg = accent }), -- Tab pages line, active tab page label
 
 		Title({ fg = accent }), -- Titles for output from ":set all", ":autocmd" etc.
 
 		Visual({ fg = bg, bg = fg_sub }), -- Visual mode selection
-		VisualNOS({ fg = fg, bg = bg }), -- Visual mode selection when vim is "Not Owning the Selection".
+		VisualNOS({ fg = bg, bg = fg_sub }), -- Visual mode selection when vim is "Not Owning the Selection".
 
 		WarningMsg({ fg = accent }), -- Warning messages
 		Whitespace({ fg = fg_sub }), -- "nbsp", "space", "tab" and "trail" in 'listchars'
@@ -244,31 +248,31 @@ local theme = lush(function(injected_functions)
 
 		-- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
 		--
-		-- DiagnosticError            { fg = fg, bg = bg } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		-- DiagnosticWarn             { fg = fg, bg = bg } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		-- DiagnosticInfo             { fg = fg, bg = bg } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		-- DiagnosticHint             { fg = fg, bg = bg } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		-- DiagnosticOk               { fg = fg, bg = bg } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		-- DiagnosticVirtualTextError { fg = fg, bg = bg } , -- Used for "Error" diagnostic virtual text.
-		-- DiagnosticVirtualTextWarn  { fg = fg, bg = bg } , -- Used for "Warn" diagnostic virtual text.
-		-- DiagnosticVirtualTextInfo  { fg = fg, bg = bg } , -- Used for "Info" diagnostic virtual text.
-		-- DiagnosticVirtualTextHint  { fg = fg, bg = bg } , -- Used for "Hint" diagnostic virtual text.
-		-- DiagnosticVirtualTextOk    { fg = fg, bg = bg } , -- Used for "Ok" diagnostic virtual text.
-		-- DiagnosticUnderlineError   { fg = fg, bg = bg } , -- Used to underline "Error" diagnostics.
-		-- DiagnosticUnderlineWarn    { fg = fg, bg = bg } , -- Used to underline "Warn" diagnostics.
-		-- DiagnosticUnderlineInfo    { fg = fg, bg = bg } , -- Used to underline "Info" diagnostics.
-		-- DiagnosticUnderlineHint    { fg = fg, bg = bg } , -- Used to underline "Hint" diagnostics.
-		-- DiagnosticUnderlineOk      { fg = fg, bg = bg } , -- Used to underline "Ok" diagnostics.
-		-- DiagnosticFloatingError    { fg = fg, bg = bg } , -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
-		-- DiagnosticFloatingWarn     { fg = fg, bg = bg } , -- Used to color "Warn" diagnostic messages in diagnostics float.
-		-- DiagnosticFloatingInfo     { fg = fg, bg = bg } , -- Used to color "Info" diagnostic messages in diagnostics float.
-		-- DiagnosticFloatingHint     { fg = fg, bg = bg } , -- Used to color "Hint" diagnostic messages in diagnostics float.
-		-- DiagnosticFloatingOk       { fg = fg, bg = bg } , -- Used to color "Ok" diagnostic messages in diagnostics float.
-		-- DiagnosticSignError        { fg = fg, bg = bg } , -- Used for "Error" signs in sign column.
-		-- DiagnosticSignWarn         { fg = fg, bg = bg } , -- Used for "Warn" signs in sign column.
-		-- DiagnosticSignInfo         { fg = fg, bg = bg } , -- Used for "Info" signs in sign column.
-		-- DiagnosticSignHint         { fg = fg, bg = bg } , -- Used for "Hint" signs in sign column.
-		-- DiagnosticSignOk           { fg = fg, bg = bg } , -- Used for "Ok" signs in sign column.
+		DiagnosticError({ fg = error }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticWarn({ fg = warn }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticInfo({ fg = info }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticHint({ fg = warn }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticOk({ fg = fg }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticVirtualTextError({ fg = error }), -- Used for "Error" diagnostic virtual text.
+		DiagnosticVirtualTextWarn({ fg = warn }), -- Used for "Warn" diagnostic virtual text.
+		DiagnosticVirtualTextInfo({ fg = info }), -- Used for "Info" diagnostic virtual text.
+		DiagnosticVirtualTextHint({ fg = warn }), -- Used for "Hint" diagnostic virtual text.
+		DiagnosticVirtualTextOk({ fg = fg }), -- Used for "Ok" diagnostic virtual text.
+		DiagnosticUnderlineError({ fg = error }), -- Used to underline "Error" diagnostics.
+		DiagnosticUnderlineWarn({ fg = warn }), -- Used to underline "Warn" diagnostics.
+		DiagnosticUnderlineInfo({ fg = info }), -- Used to underline "Info" diagnostics.
+		DiagnosticUnderlineHint({ fg = warn }), -- Used to underline "Hint" diagnostics.
+		DiagnosticUnderlineOk({ fg = fg }), -- Used to underline "Ok" diagnostics.
+		DiagnosticFloatingError({ fg = error }), -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
+		DiagnosticFloatingWarn({ fg = warn }), -- Used to color "Warn" diagnostic messages in diagnostics float.
+		DiagnosticFloatingInfo({ fg = info }), -- Used to color "Info" diagnostic messages in diagnostics float.
+		DiagnosticFloatingHint({ fg = warn }), -- Used to color "Hint" diagnostic messages in diagnostics float.
+		DiagnosticFloatingOk({ fg = fg }), -- Used to color "Ok" diagnostic messages in diagnostics float.
+		DiagnosticSignError({ fg = error }), -- Used for "Error" signs in sign column.
+		DiagnosticSignWarn({ fg = warn }), -- Used for "Warn" signs in sign column.
+		DiagnosticSignInfo({ fg = info }), -- Used for "Info" signs in sign column.
+		DiagnosticSignHint({ fg = warn }), -- Used for "Hint" signs in sign column.
+		DiagnosticSignOk({ fg = fg }), -- Used for "Ok" signs in sign column.
 
 		-- Tree-Sitter syntax groups.
 		--
