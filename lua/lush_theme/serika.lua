@@ -167,7 +167,7 @@ local theme = lush(function(injected_functions)
 
 		Title({ fg = accent }), -- Titles for output from ":set all", ":autocmd" etc.
 
-		Visual({ fg = fg, bg = bg }), -- Visual mode selection
+		Visual({ fg = bg, bg = fg_sub }), -- Visual mode selection
 		VisualNOS({ fg = fg, bg = bg }), -- Visual mode selection when vim is "Not Owning the Selection".
 
 		WarningMsg({ fg = accent }), -- Warning messages
