@@ -127,7 +127,7 @@ local theme = lush(function(injected_functions)
 		CursorLineFold({ fg = accent }), -- Like FoldColumn when 'cursorline' is set for the cursor line
 		CursorLineSign({ fg = accent }), -- Like SignColumn when 'cursorline' is set for the cursor line
 
-		MatchParen({ fg = bg, bg = accent }), -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+		MatchParen({ fg = bg, bg = fg_sub }), -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
 
 		ModeMsg({ fg = fg_sub }), -- 'showmode' message (e.g., "-- INSERT -- ")
 		MsgArea({ fg = accent }), -- Area for messages and cmdline
@@ -268,7 +268,7 @@ local theme = lush(function(injected_functions)
 		DiagnosticFloatingInfo({ fg = info }), -- Used to color "Info" diagnostic messages in diagnostics float.
 		DiagnosticFloatingHint({ fg = warn }), -- Used to color "Hint" diagnostic messages in diagnostics float.
 		DiagnosticFloatingOk({ fg = fg }), -- Used to color "Ok" diagnostic messages in diagnostics float.
-		DiagnosticSignError({ fg = error, gui = "underline" }), -- Used for "Error" signs in sign column.
+		DiagnosticSignError({ fg = error }), -- Used for "Error" signs in sign column.
 		DiagnosticSignWarn({ fg = warn }), -- Used for "Warn" signs in sign column.
 		DiagnosticSignInfo({ fg = info }), -- Used for "Info" signs in sign column.
 		DiagnosticSignHint({ fg = warn }), -- Used for "Hint" signs in sign column.
