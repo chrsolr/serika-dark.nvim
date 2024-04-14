@@ -109,7 +109,7 @@ local theme = lush(function(injected_functions)
 
 		EndOfBuffer({ fg = fg }), -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
 
-		ErrorMsg({ fg = red }), -- Error messages on the command line
+		ErrorMsg({ fg = red, gui = "underline" }), -- Error messages on the command line
 		VertSplit({ fg = fg }), -- Column separating vertically split windows
 
 		Folded({ fg = fg_sub }), -- Line used for closed folds
@@ -230,7 +230,7 @@ local theme = lush(function(injected_functions)
 
 		Underlined({ fg = blue, gui = "underline" }), -- Text that stands out, HTML links
 		Ignore({ fg = fg_sub }), -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
-		Error({ fg = red }), -- Any erroneous construct
+		Error({ fg = red, gui = "underline" }), -- Any erroneous construct
 		Todo({ fg = blue }), -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
 		-- These groups are for the native LSP client and diagnostic system. Some
@@ -248,27 +248,27 @@ local theme = lush(function(injected_functions)
 
 		-- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
 		--
-		DiagnosticError({ fg = error }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticError({ fg = error, gui = "underline" }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticWarn({ fg = warn }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticInfo({ fg = info }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticHint({ fg = warn }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticOk({ fg = fg }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticVirtualTextError({ fg = error }), -- Used for "Error" diagnostic virtual text.
+		DiagnosticVirtualTextError({ fg = error, gui = "underline" }), -- Used for "Error" diagnostic virtual text.
 		DiagnosticVirtualTextWarn({ fg = warn }), -- Used for "Warn" diagnostic virtual text.
 		DiagnosticVirtualTextInfo({ fg = info }), -- Used for "Info" diagnostic virtual text.
 		DiagnosticVirtualTextHint({ fg = warn }), -- Used for "Hint" diagnostic virtual text.
 		DiagnosticVirtualTextOk({ fg = fg }), -- Used for "Ok" diagnostic virtual text.
-		DiagnosticUnderlineError({ fg = error }), -- Used to underline "Error" diagnostics.
+		DiagnosticUnderlineError({ fg = error, gui = "underline" }), -- Used to underline "Error" diagnostics.
 		DiagnosticUnderlineWarn({ fg = warn }), -- Used to underline "Warn" diagnostics.
 		DiagnosticUnderlineInfo({ fg = info }), -- Used to underline "Info" diagnostics.
 		DiagnosticUnderlineHint({ fg = warn }), -- Used to underline "Hint" diagnostics.
 		DiagnosticUnderlineOk({ fg = fg }), -- Used to underline "Ok" diagnostics.
-		DiagnosticFloatingError({ fg = error }), -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
+		DiagnosticFloatingError({ fg = error, gui = "underline" }), -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
 		DiagnosticFloatingWarn({ fg = warn }), -- Used to color "Warn" diagnostic messages in diagnostics float.
 		DiagnosticFloatingInfo({ fg = info }), -- Used to color "Info" diagnostic messages in diagnostics float.
 		DiagnosticFloatingHint({ fg = warn }), -- Used to color "Hint" diagnostic messages in diagnostics float.
 		DiagnosticFloatingOk({ fg = fg }), -- Used to color "Ok" diagnostic messages in diagnostics float.
-		DiagnosticSignError({ fg = error }), -- Used for "Error" signs in sign column.
+		DiagnosticSignError({ fg = error, gui = "underline" }), -- Used for "Error" signs in sign column.
 		DiagnosticSignWarn({ fg = warn }), -- Used for "Warn" signs in sign column.
 		DiagnosticSignInfo({ fg = info }), -- Used for "Info" signs in sign column.
 		DiagnosticSignHint({ fg = warn }), -- Used for "Hint" signs in sign column.
